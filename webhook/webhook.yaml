@@ -1,0 +1,19 @@
+apiVersion: webhookconfig.keptn.sh/v1alpha1
+kind: WebhookConfig
+metadata:
+  name: webhook-configuration
+spec:
+  webhooks:
+    - type: sh.keptn.event.Performance-test.triggered
+      requests:
+        - "curl --header 'accountToken:
+          {{.env.secret_neoloadwebhook_accountToken}}' --request POST
+          https://neoload-api.saas.neotys.com/v3/workspaces/5e3acde2e860a132744\
+          ca916/tests/62ae016f-404d-405c-a451-bdac446753c4/start?testResultName\
+          =Demo-test-result&testResultDescription=stage-{{.data.stage}}"
+      envFrom:
+        - name: secret_neoloadwebhook_accountToken
+          secretRef:
+            name: neoload-webhook
+            key: accountToken
+      subscriptionID: 4885611c-ab22-4f10-a613-3104d7c6f263
