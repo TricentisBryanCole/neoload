@@ -1,0 +1,11 @@
+{
+  "type": "sh.keptn.event.production.validation.triggered",
+  "specversion":"1.0",
+  "source":"cas-quickstart",
+  "data":{
+    "project":"<yourprojectname>",
+    "stage":"production",
+    "service":"PerfTest",
+    "custom":"Instantiate a performance test"
+  }
+}
